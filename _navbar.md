@@ -1,0 +1,5 @@
+- [🏠 Beranda](README.md)
+- [⚡ Master Prompt](prompts/00-MASTER-PROMPT.md)
+- [📋 PRD](docs/01-PRD.md)
+- [🗺️ Sitemap](docs/02-SITEMAP-AND-APPFLOW.md)
+- [📦 GitHub Repo](https://github.com/dandirayo/Liebe-B2B)

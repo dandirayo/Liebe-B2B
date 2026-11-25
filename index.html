@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Liebe Pyrus B2B — Corporate Merchandise Platform Documentation & Prompts</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Dokumentasi Teknis, Master Prompt AI, PRD, dan Cetak Biru Platform B2B Liebe Pyrus Indonesia.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Google Fonts: Plus Jakarta Sans & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Docsify Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <style>
+    :root {
+      --theme-color: #C89B3C;
+      --heading-color: #0F1D35;
+      --sidebar-bg: #0F1D35;
+      --sidebar-text: #E2E8F0;
+      --sidebar-active: #E0B65A;
+      --base-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --heading-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      font-family: var(--base-font-family);
+      color: #1E293B;
+      background-color: #F8F7F4;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--heading-font-family);
+      color: var(--heading-color);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+
+    h1 {
+      font-weight: 800;
+      color: #0A1426;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Sidebar Styling (Liebe Pyrus Prussian Navy) */
+    .sidebar {
+      background-color: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      border-right: 1px solid #1E2B45;
+    }
+
+    .sidebar > h1 {
+      font-family: var(--heading-font-family);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 1.25rem 1rem 0.5rem;
+      border-bottom: none;
+    }
+
+    .sidebar > h1 a {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .sidebar > h1 span.gold {
+      color: #E0B65A;
+    }
+
+    .sidebar ul li a {
+      color: #94A3B8;
+      font-size: 0.925rem;
+      transition: all 0.2s ease;
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+    }
+
+    .sidebar ul li a:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+    }
+
+    .sidebar ul li.active > a {
+      color: #0A1426 !important;
+      background: linear-gradient(90deg, #E0B65A 0%, #C89B3C 100%) !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(200, 155, 60, 0.3);
+    }
+
+    .sidebar-toggle {
+      background-color: var(--sidebar-bg);
+      padding: 10px;
+    }
+
+    .sidebar-toggle span {
+      background-color: #E0B65A;
+    }
+
+    /* Navbar Styling */
+    .app-nav {
+      top: 15px;
+      right: 25px;
+    }
+
+    .app-nav li a {
+      color: #0F1D35;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .app-nav li a:hover {
+      color: var(--theme-color);
+      background-color: rgba(200, 155, 60, 0.1);
+    }
+
+    /* Content Area */
+    .content {
+      padding-top: 2rem;
+      max-width: 960px;
+    }
+
+    .markdown-section {
+      max-width: 960px;
+      padding: 2rem 3rem;
+    }
+
+    /* Tables */
+    .markdown-section table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      display: table !important;
+    }
+
+    .markdown-section th {
+      background-color: #0F1D35;
+      color: #F8FAFC;
+      font-family: var(--heading-font-family);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 12px 16px;
+      border: none;
+    }
+
+    .markdown-section td {
+      padding: 10px 16px;
+      border-top: 1px solid #E2E8F0;
+      border-bottom: none;
+      border-left: none;
+      border-right: 1px solid #E2E8F0;
+      font-size: 0.925rem;
+    }
+
+    .markdown-section tr:last-child td {
+      border-bottom: none;
+    }
+
+    .markdown-section tr:nth-child(even) td {
+      background-color: #F8FAFC;
+    }
+
+    /* Callout & Blockquotes */
+    .markdown-section blockquote {
+      border-left: 4px solid var(--theme-color);
+      background: #FFFFFF;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      color: #334155;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    /* Code blocks */
+    .markdown-section pre {
+      background-color: #0A1426 !important;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #1E2B45;
+    }
+
+    .markdown-section code {
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+      font-size: 0.875rem;
+    }
+
+    .markdown-section p code, .markdown-section li code {
+      background-color: #E2E8F0;
+      color: #0F1D35;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Copy button */
+    .docsify-copy-code-button {
+      background: #E0B65A !important;
+      color: #0A1426 !important;
+      font-weight: 700 !important;
+      font-size: 0.8rem !important;
+      border-radius: 4px !important;
+      padding: 6px 12px !important;
+    }
+
+    /* Search Input */
+    .sidebar .search input {
+      background-color: #182B4D;
+      color: #F8FAFC;
+      border: 1px solid #2B3E60;
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .sidebar .search input::placeholder {
+      color: #94A3B8;
+    }
+
+    .search .matching-post {
+      border-bottom: 1px solid #1E2B45;
+    }
+
+    .search .matching-post h2 {
+      color: #E0B65A;
+    }
+
+    .search .matching-post p {
+      color: #CBD5E1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Memuat Portal Dokumentasi Liebe Pyrus B2B...</div>
+
+  <!-- Mermaid.js for Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'neutral',
+      themeVariables: {
+        primaryColor: '#0F1D35',
+        primaryTextColor: '#FFFFFF',
+        primaryBorderColor: '#C89B3C',
+        lineColor: '#C89B3C',
+        secondaryColor: '#F8F7F4',
+        tertiaryColor: '#FFFFFF'
+      }
+    });
+
+    let mermaidId = 0;
+
+    window.$docsify = {
+      name: '<span class="gold">LIEBE PYRUS</span> B2B',
+      repo: 'https://github.com/dandirayo/Liebe-B2B',
+      loadSidebar: true,
+      loadNavbar: true,
+      auto2top: true,
+      subMaxLevel: 3,
+      relativePath: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Cari modul, PRD, atau prompt...',
+        noData: 'Tidak ada hasil ditemukan.',
+        depth: 3
+      },
+      copyCode: {
+        buttonText: 'Salin',
+        errorText: 'Gagal',
+        successText: 'Tersalin!'
+      },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return '<div class="mermaid">' + code + '</div>';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            if (window.mermaid) {
+              window.mermaid.run({
+                nodes: document.querySelectorAll('.mermaid')
+              });
+            }
+          });
+        }
+      ]
+    };
+  </script>
+
+  <!-- Docsify Core -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <!-- Search Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- Copy Code Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- Image Zoom Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <!-- Syntax Highlighting (Prism) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+</body>
+</html>
