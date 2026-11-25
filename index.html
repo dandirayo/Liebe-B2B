@@ -1,328 +1,1893 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <title>Liebe Pyrus B2B — Corporate Merchandise Platform Documentation & Prompts</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Dokumentasi Teknis, Master Prompt AI, PRD, dan Cetak Biru Platform B2B Liebe Pyrus Indonesia.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liebe Pyrus Indonesia — Supplier Merchandise & Souvenir Perusahaan di Jakarta</title>
+  <meta name="description" content="Supplier merchandise dan souvenir perusahaan di Jakarta dengan 6 mesin cetak logo in-house. Powerbank, tumbler SUS 304, payung, seminar kit, dan agenda custom logo. QC satu per satu, garansi 1 tahun.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Supplier Merchandise & Souvenir Perusahaan di Jakarta | Liebe Pyrus Indonesia">
+  <meta property="og:description" content="Supplier merchandise dan souvenir perusahaan di Jakarta dengan layanan cetak in-house. Dari produk sampai cetak, satu tanggung jawab.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
 
-  <!-- Google Fonts: Plus Jakarta Sans & DM Sans -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              800: '#182B4D',
+              900: '#0F1D35',
+              950: '#0A1426',
+            },
+            gold: {
+              100: '#FBF5E8',
+              400: '#E0B65A',
+              500: '#C89B3C',
+              600: '#B08428',
+            },
+            canvas: '#F8F7F4',
+          },
+          fontFamily: {
+            sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Docsify Theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
   <style>
-    :root {
-      --theme-color: #C89B3C;
-      --heading-color: #0F1D35;
-      --sidebar-bg: #0F1D35;
-      --sidebar-text: #E2E8F0;
-      --sidebar-active: #E0B65A;
-      --base-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --heading-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #F3D084 0%, #C89B3C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    body {
-      font-family: var(--base-font-family);
-      color: #1E293B;
-      background-color: #F8F7F4;
-      line-height: 1.7;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--heading-font-family);
-      color: var(--heading-color);
-      font-weight: 700;
-      letter-spacing: -0.015em;
-    }
-
-    h1 {
-      font-weight: 800;
-      color: #0A1426;
-      border-bottom: 2px solid #E2E8F0;
-      padding-bottom: 0.5rem;
-    }
-
-    /* Sidebar Styling (Liebe Pyrus Prussian Navy) */
-    .sidebar {
-      background-color: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      border-right: 1px solid #1E2B45;
-    }
-
-    .sidebar > h1 {
-      font-family: var(--heading-font-family);
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 1.25rem 1rem 0.5rem;
-      border-bottom: none;
-    }
-
-    .sidebar > h1 a {
-      color: #FFFFFF !important;
-      text-decoration: none;
-    }
-
-    .sidebar > h1 span.gold {
-      color: #E0B65A;
-    }
-
-    .sidebar ul li a {
-      color: #94A3B8;
-      font-size: 0.925rem;
-      transition: all 0.2s ease;
-      border-radius: 6px;
-      padding: 0.35rem 0.75rem;
-    }
-
-    .sidebar ul li a:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.06);
-      text-decoration: none;
-    }
-
-    .sidebar ul li.active > a {
-      color: #0A1426 !important;
-      background: linear-gradient(90deg, #E0B65A 0%, #C89B3C 100%) !important;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(200, 155, 60, 0.3);
-    }
-
-    .sidebar-toggle {
-      background-color: var(--sidebar-bg);
-      padding: 10px;
-    }
-
-    .sidebar-toggle span {
-      background-color: #E0B65A;
-    }
-
-    /* Navbar Styling */
-    .app-nav {
-      top: 15px;
-      right: 25px;
-    }
-
-    .app-nav li a {
-      color: #0F1D35;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .app-nav li a:hover {
-      color: var(--theme-color);
-      background-color: rgba(200, 155, 60, 0.1);
-    }
-
-    /* Content Area */
-    .content {
-      padding-top: 2rem;
-      max-width: 960px;
-    }
-
-    .markdown-section {
-      max-width: 960px;
-      padding: 2rem 3rem;
-    }
-
-    /* Tables */
-    .markdown-section table {
-      border-collapse: separate;
-      border-spacing: 0;
-      width: 100%;
-      margin: 1.5rem 0;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #CBD5E1;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      display: table !important;
-    }
-
-    .markdown-section th {
-      background-color: #0F1D35;
-      color: #F8FAFC;
-      font-family: var(--heading-font-family);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      padding: 12px 16px;
-      border: none;
-    }
-
-    .markdown-section td {
-      padding: 10px 16px;
-      border-top: 1px solid #E2E8F0;
-      border-bottom: none;
-      border-left: none;
-      border-right: 1px solid #E2E8F0;
-      font-size: 0.925rem;
-    }
-
-    .markdown-section tr:last-child td {
-      border-bottom: none;
-    }
-
-    .markdown-section tr:nth-child(even) td {
-      background-color: #F8FAFC;
-    }
-
-    /* Callout & Blockquotes */
-    .markdown-section blockquote {
-      border-left: 4px solid var(--theme-color);
-      background: #FFFFFF;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-      color: #334155;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    }
-
-    /* Code blocks */
-    .markdown-section pre {
-      background-color: #0A1426 !important;
-      border-radius: 8px;
-      padding: 1.25rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #1E2B45;
-    }
-
-    .markdown-section code {
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
-      font-size: 0.875rem;
-    }
-
-    .markdown-section p code, .markdown-section li code {
-      background-color: #E2E8F0;
-      color: #0F1D35;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    /* Copy button */
-    .docsify-copy-code-button {
-      background: #E0B65A !important;
-      color: #0A1426 !important;
-      font-weight: 700 !important;
-      font-size: 0.8rem !important;
-      border-radius: 4px !important;
-      padding: 6px 12px !important;
-    }
-
-    /* Search Input */
-    .sidebar .search input {
-      background-color: #182B4D;
-      color: #F8FAFC;
-      border: 1px solid #2B3E60;
-      border-radius: 6px;
-      padding: 8px 12px;
-    }
-
-    .sidebar .search input::placeholder {
-      color: #94A3B8;
-    }
-
-    .search .matching-post {
-      border-bottom: 1px solid #1E2B45;
-    }
-
-    .search .matching-post h2 {
-      color: #E0B65A;
-    }
-
-    .search .matching-post p {
-      color: #CBD5E1;
-    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #F1F5F9; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
   </style>
 </head>
-<body>
-  <div id="app">Memuat Portal Dokumentasi Liebe Pyrus B2B...</div>
+<body class="bg-canvas text-slate-800 antialiased selection:bg-gold-500 selection:text-white flex flex-col min-h-screen">
 
-  <!-- Mermaid.js for Diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <!-- Top Announcement Bar -->
+  <div class="bg-navy-950 text-slate-300 text-xs py-2 px-4 border-b border-navy-800/80">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gold-500/20 text-gold-400 font-medium text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+          B2B Supplier & In-House Printing
+        </span>
+        <span class="hidden sm:inline text-slate-400">Garansi 1 Tahun Elektronik · QC 1-per-1 · Blind Dropship Reseller</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <button onclick="openPromptViewer()" class="text-gold-400 hover:text-gold-300 flex items-center gap-1 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Dokumentasi & AI Master Prompt
+        </button>
+        <a href="https://github.com/dandirayo/Liebe-B2B" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 bg-navy-900 border-b border-navy-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#beranda" onclick="showView('home')" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-heading font-extrabold text-navy-950 text-xl shadow-md group-hover:scale-105 transition-transform">
+          LP
+        </div>
+        <div>
+          <span class="block font-heading font-extrabold text-xl tracking-wider text-white leading-tight">
+            LIEBE PYRUS
+          </span>
+          <span class="block text-[10px] tracking-widest text-gold-400 font-semibold uppercase">
+            INDONESIA · B2B SUPPLIER
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-200">
+        <button onclick="showView('home')" id="nav-home" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition text-gold-400 font-semibold">
+          Beranda
+        </button>
+        <button onclick="showView('catalog')" id="nav-catalog" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition">
+          Katalog Produk
+        </button>
+        <button onclick="showView('seminar-kit')" id="nav-seminar" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition flex items-center gap-1.5">
+          <span>Seminar Kit</span>
+          <span class="px-1.5 py-0.5 rounded text-[10px] bg-gold-500/20 text-gold-400 font-bold">Populer</span>
+        </button>
+        <button onclick="showView('services')" id="nav-services" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition">
+          Layanan Cetak
+        </button>
+        <button onclick="showView('quality')" id="nav-quality" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition">
+          Kualitas & Garansi
+        </button>
+        <button onclick="showView('contact')" id="nav-contact" class="px-3.5 py-2 rounded-md hover:text-gold-400 hover:bg-navy-800 transition">
+          Kontak & RFQ
+        </button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="showView('catalog')" class="px-4 py-2.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 text-sm font-semibold border border-navy-700 transition flex items-center gap-2">
+          <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+          Lihat Katalog
+        </button>
+        <a id="header-wa-cta" href="https://wa.me/6283843893244?text=Halo%20Liebe%20Pyrus%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20merchandise%20perusahaan." target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-md hover:shadow-emerald-900/30 transition flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11.7c0 4.6-3.8 8.3-8.4 8.3-1.4 0-2.7-.3-3.9-.9L4 20l1-3.5C4.2 15.1 3.8 13.5 3.8 12c0-4.6 3.8-8.3 8.4-8.3S20.6 7.1 20 11.7z"/><path d="M9.2 8.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.8 2.8 4.4 3.8 2.1.8 2.5.6 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.8-.9c-.3-.1-.5-.2-.7.2l-.6.8c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.3-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9z"/></svg>
+          <span>Chat Sales B2B</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="hidden lg:hidden border-t border-navy-800 bg-navy-950 px-4 py-4 space-y-2">
+      <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Beranda</button>
+      <button onclick="showView('catalog'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Katalog Produk 3-Layer</button>
+      <button onclick="showView('seminar-kit'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Seminar Kit Finder</button>
+      <button onclick="showView('services'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Layanan Cetak 6 Mesin</button>
+      <button onclick="showView('quality'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Kualitas & Garansi</button>
+      <button onclick="showView('contact'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-slate-200 hover:text-gold-400 font-medium">Kontak & Form RFQ (OTP)</button>
+      <button onclick="openPromptViewer(); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded text-gold-400 font-bold bg-navy-900 border border-gold-500/30">⚡ Buka Blueprint & Master Prompt</button>
+      <div class="pt-2">
+        <a href="https://wa.me/6283843893244?text=Halo%20Liebe%20Pyrus%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20merchandise%20perusahaan." target="_blank" class="block text-center py-2.5 rounded bg-emerald-600 text-white font-semibold">Chat WhatsApp Sales B2B</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEW CONTAINER -->
+  <main class="flex-grow">
+    
+    <!-- ========================================== -->
+    <!-- VIEW: BERANDA (HOMEPAGE)                   -->
+    <!-- ========================================== -->
+    <div id="view-home" class="view-panel">
+      
+      <!-- HERO SECTION -->
+      <section class="relative bg-navy-900 text-white overflow-hidden py-16 lg:py-24 border-b border-navy-800">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#E0B65A_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-800/90 border border-navy-700 text-gold-400 text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+                In-House Printing & Direct B2B Supplier
+              </div>
+              <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+                Supplier Merchandise & Souvenir Perusahaan di Jakarta
+              </h1>
+              <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+                Dari produk sampai cetak logo, <span class="text-white font-semibold">satu tanggung jawab, satu invoice</span>. Didukung 6 mesin cetak in-house, proses QC satu per satu, dan garansi resmi 1 tahun untuk seluruh produk elektronik.
+              </p>
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <button onclick="showView('catalog')" class="px-6 py-3.5 rounded-lg bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-600 text-navy-950 font-heading font-bold text-base shadow-lg shadow-gold-500/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                  <span>Eksplorasi Katalog Produk</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <button onclick="showView('seminar-kit')" class="px-6 py-3.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-white font-heading font-semibold text-base border border-navy-700 transition flex items-center gap-2">
+                  <span>Paket Seminar Kit</span>
+                </button>
+              </div>
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-navy-800/80 text-slate-300">
+                <div>
+                  <div class="font-heading font-bold text-xl text-gold-400">500+</div>
+                  <div class="text-xs text-slate-400">Mitra Reseller Aktif</div>
+                </div>
+                <div>
+                  <div class="font-heading font-bold text-xl text-gold-400">6 Mesin</div>
+                  <div class="text-xs text-slate-400">Cetak Logo In-House</div>
+                </div>
+                <div>
+                  <div class="font-heading font-bold text-xl text-gold-400">1 Tahun</div>
+                  <div class="text-xs text-slate-400">Garansi Elektronik</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+              <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl bg-gradient-to-tr from-navy-800 to-navy-700 p-3 shadow-2xl border border-navy-700">
+                <div class="rounded-xl bg-navy-950 p-6 space-y-4">
+                  <div class="flex items-center justify-between border-b border-navy-800 pb-3">
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Produk Populer Korporat</span>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">MOQ Mulai 25-50 pcs</span>
+                  </div>
+                  <!-- Mini Featured Preview -->
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-2.5 rounded-lg bg-navy-900 border border-navy-800 hover:border-gold-500/40 transition cursor-pointer" onclick="openProductModal('LP-PB100-01')">
+                      <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center text-gold-400 font-heading font-bold text-xs">
+                        10.000 mAh
+                      </div>
+                      <div class="flex-grow min-w-0">
+                        <div class="text-white text-sm font-bold truncate">Powerbank Slim ABS Custom Logo</div>
+                        <div class="text-xs text-slate-400">SKU: LP-PB100-01 · Cetak UV & Laser</div>
+                      </div>
+                      <span class="text-xs text-gold-400 font-semibold">Lihat →</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-2.5 rounded-lg bg-navy-900 border border-navy-800 hover:border-gold-500/40 transition cursor-pointer" onclick="openProductModal('LP-TMB304-01')">
+                      <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center text-gold-400 font-heading font-bold text-xs">
+                        SUS 304
+                      </div>
+                      <div class="flex-grow min-w-0">
+                        <div class="text-white text-sm font-bold truncate">Vacuum Flask Stainless 500ml Zenith</div>
+                        <div class="text-xs text-slate-400">SKU: LP-TMB304-01 · Grafir & Sablon</div>
+                      </div>
+                      <span class="text-xs text-gold-400 font-semibold">Lihat →</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-2.5 rounded-lg bg-navy-900 border border-navy-800 hover:border-gold-500/40 transition cursor-pointer" onclick="openProductModal('LP-UML3-01')">
+                      <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center text-gold-400 font-heading font-bold text-xs">
+                        UPF 50+
+                      </div>
+                      <div class="flex-grow min-w-0">
+                        <div class="text-white text-sm font-bold truncate">Payung Lipat 3 Otomatis Black UV</div>
+                        <div class="text-xs text-slate-400">SKU: LP-UML3-01 · Sablon Presisi</div>
+                      </div>
+                      <span class="text-xs text-gold-400 font-semibold">Lihat →</span>
+                    </div>
+                  </div>
+                  <div class="pt-2 text-center">
+                    <button onclick="showView('catalog')" class="text-xs text-slate-400 hover:text-white underline">
+                      Buka Semua 99+ Pilihan Produk di Katalog &rarr;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIENT SHOWCASE -->
+      <section class="py-10 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <p class="text-xs font-heading font-bold uppercase tracking-wider text-slate-400 mb-6">
+            Produk Kami, Nama Mereka — Dipercaya 500+ Reseller & Korporasi Terbaik Indonesia
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-70 grayscale hover:grayscale-0 transition-all font-heading font-bold text-slate-600 text-sm">
+            <span>Siloam Hospitals</span>
+            <span>Telkom Indonesia</span>
+            <span>Mayora Group</span>
+            <span>Astra International</span>
+            <span>Bank BRI</span>
+            <span>Bank Mandiri</span>
+            <span>Traveloka</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE LIEBE PYRUS (4 VALUE PILLARS) -->
+      <section class="py-16 lg:py-20 bg-navy-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 class="text-gold-400 font-heading font-bold text-sm tracking-widest uppercase">Standar Kemitraan B2B</h2>
+            <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+              Mengapa Reseller & Korporasi Memilih Liebe Pyrus?
+            </h3>
+            <p class="text-slate-300 text-base">
+              Kami bantu Anda memenangkan tender dan menjaga reputasi bukan dengan janji murah, tetapi dengan kualitas fisik yang bisa diuji langsung.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-navy-900 border border-navy-800 rounded-xl p-6 space-y-4 hover:border-gold-500/50 transition">
+              <div class="w-12 h-12 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Reputasi Anda Aman</h4>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Setiap produk diperiksa satu per satu melalui 4 tahap QC. Jika ada cacat cetak atau fisik, itu tanggung jawab penuh kami, bukan Anda.
+              </p>
+            </div>
+
+            <div class="bg-navy-900 border border-navy-800 rounded-xl p-6 space-y-4 hover:border-gold-500/50 transition">
+              <div class="w-12 h-12 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">6 Mesin In-House</h4>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                UV flatbed, laser engraving, sablon, hot stamping, dan DTF di bawah satu atap workshop. Tidak perlu koordinasi banyak vendor, satu invoice rapi.
+              </p>
+            </div>
+
+            <div class="bg-navy-900 border border-navy-800 rounded-xl p-6 space-y-4 hover:border-gold-500/50 transition">
+              <div class="w-12 h-12 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Garansi 1 Tahun Resmi</h4>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Seluruh produk elektronik (powerbank, TWS, adapter, flashdisk) dilindungi garansi 12 bulan. Klien komplain? Hubungi kami langsung untuk ganti unit.
+              </p>
+            </div>
+
+            <div class="bg-navy-900 border border-navy-800 rounded-xl p-6 space-y-4 hover:border-gold-500/50 transition">
+              <div class="w-12 h-12 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Blind Dropship Reseller</h4>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Kami bisa mengirimkan pesanan langsung ke tangan klien akhir menggunakan label pengirim atas nama perusahaan/reseller Anda secara rahasia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 MAIN CATEGORIES -->
+      <section class="py-16 bg-canvas">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <h2 class="text-gold-600 font-heading font-bold text-sm tracking-wider uppercase">Pilihan Kategori</h2>
+              <h3 class="font-heading font-extrabold text-3xl text-navy-950">Kategori Produk Utama</h3>
+            </div>
+            <button onclick="showView('catalog')" class="mt-4 md:mt-0 font-heading font-semibold text-gold-600 hover:text-gold-700 flex items-center gap-1 text-sm">
+              <span>Buka Katalog Lengkap 3-Layer</span> &rarr;
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Gadget -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group cursor-pointer" onclick="filterByMainCategory('gadget')">
+              <div class="h-44 bg-slate-900 relative p-6 flex flex-col justify-end text-white">
+                <div class="absolute top-4 right-4 text-xs bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">Garansi 1 Thn</div>
+                <div class="font-heading font-extrabold text-2xl">GADGET</div>
+                <p class="text-xs text-slate-300">Powerbank, TWS, USB Drive, Wireless Charger</p>
+              </div>
+              <div class="p-4 space-y-2 text-xs text-slate-600">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Powerbank</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">TWS Earphone</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Flashdisk</span>
+                </div>
+                <div class="pt-2 text-gold-600 font-bold flex items-center gap-1">
+                  Lihat Koleksi Gadget &rarr;
+                </div>
+              </div>
+            </div>
+
+            <!-- Tumbler -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group cursor-pointer" onclick="filterByMainCategory('tumbler')">
+              <div class="h-44 bg-navy-900 relative p-6 flex flex-col justify-end text-white">
+                <div class="absolute top-4 right-4 text-xs bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">SUS 304 Lab Test</div>
+                <div class="font-heading font-extrabold text-2xl">TUMBLER</div>
+                <p class="text-xs text-slate-300">Vacuum Flask, Coffee Cup, Sports Bottle</p>
+              </div>
+              <div class="p-4 space-y-2 text-xs text-slate-600">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Stainless 304</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Coffee Mug</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">LED Temperature</span>
+                </div>
+                <div class="pt-2 text-gold-600 font-bold flex items-center gap-1">
+                  Lihat Koleksi Tumbler &rarr;
+                </div>
+              </div>
+            </div>
+
+            <!-- Stationery -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group cursor-pointer" onclick="filterByMainCategory('stationery')">
+              <div class="h-44 bg-slate-800 relative p-6 flex flex-col justify-end text-white">
+                <div class="absolute top-4 right-4 text-xs bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">Hot Stamp / Emboss</div>
+                <div class="font-heading font-extrabold text-2xl">STATIONERY</div>
+                <p class="text-xs text-slate-300">Agenda Kulit, Notebook A5, Pulpen Metal</p>
+              </div>
+              <div class="p-4 space-y-2 text-xs text-slate-600">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Hardcover PU</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Pulpen Metal</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Gift Set</span>
+                </div>
+                <div class="pt-2 text-gold-600 font-bold flex items-center gap-1">
+                  Lihat Koleksi Stationery &rarr;
+                </div>
+              </div>
+            </div>
+
+            <!-- Payung -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group cursor-pointer" onclick="filterByMainCategory('payung')">
+              <div class="h-44 bg-navy-950 relative p-6 flex flex-col justify-end text-white">
+                <div class="absolute top-4 right-4 text-xs bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">Anti-UV Black Coating</div>
+                <div class="font-heading font-extrabold text-2xl">PAYUNG</div>
+                <p class="text-xs text-slate-300">Payung Lipat 3, Payung Golf, Payung Kapsul</p>
+              </div>
+              <div class="p-4 space-y-2 text-xs text-slate-600">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Otomatis Lipat 3</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Golf 30 Inch</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">Kapsul Mini</span>
+                </div>
+                <div class="pt-2 text-gold-600 font-bold flex items-center gap-1">
+                  Lihat Koleksi Payung &rarr;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5-STEP WORKFLOW -->
+      <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-gold-600 font-heading font-bold text-xs uppercase tracking-widest">Alur Pengerjaan Mudah</h2>
+            <h3 class="font-heading font-extrabold text-3xl text-navy-950">Cara Kerja Liebe Pyrus</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-center">
+            <div class="p-4 rounded-xl bg-canvas border border-slate-200 space-y-2">
+              <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-heading font-bold mx-auto flex items-center justify-center text-sm">01</div>
+              <h4 class="font-heading font-bold text-sm text-navy-950">Pilih Produk</h4>
+              <p class="text-xs text-slate-500">Pilih produk dari katalog kami sesuai budget & spesifikasi acara.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas border border-slate-200 space-y-2">
+              <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-heading font-bold mx-auto flex items-center justify-center text-sm">02</div>
+              <h4 class="font-heading font-bold text-sm text-navy-950">Kirim File Logo</h4>
+              <p class="text-xs text-slate-500">Tim kami membantu layout & digital mockup secara gratis sebelum cetak.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas border border-slate-200 space-y-2">
+              <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-heading font-bold mx-auto flex items-center justify-center text-sm">03</div>
+              <h4 class="font-heading font-bold text-sm text-navy-950">Cetak In-House</h4>
+              <p class="text-xs text-slate-500">6 mesin cetak profesional mengerjakan logo dengan warna & presisi tinggi.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas border border-slate-200 space-y-2">
+              <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-heading font-bold mx-auto flex items-center justify-center text-sm">04</div>
+              <h4 class="font-heading font-bold text-sm text-navy-950">Quality Check</h4>
+              <p class="text-xs text-slate-500">Pemeriksaan fisik & fungsi 1-per-1 sebelum packing ke box pengiriman.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas border border-slate-200 space-y-2">
+              <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-heading font-bold mx-auto flex items-center justify-center text-sm">05</div>
+              <h4 class="font-heading font-bold text-sm text-navy-950">Kirim Tepat Waktu</h4>
+              <p class="text-xs text-slate-500">Produk tiba aman ke kantor Anda atau blind dropship langsung ke klien.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM CONVERSION CTA -->
+      <section class="py-14 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 text-white border-t border-navy-800 text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+          <h2 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl">
+            Siap Menghadirkan Merchandise Korporat Terbaik?
+          </h2>
+          <p class="text-slate-300 text-base max-w-2xl mx-auto">
+            Konsultasikan ide produk, jumlah pesanan, dan teknik cetak logo dengan tim spesialis Liebe Pyrus. Respon cepat, konsultasi 100% gratis.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <button onclick="showView('catalog')" class="px-6 py-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-heading font-bold text-sm transition">
+              Eksplorasi Katalog Produk
+            </button>
+            <a href="https://wa.me/6283843893244?text=Halo%20Liebe%20Pyrus%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20merchandise%20perusahaan." target="_blank" class="px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold text-sm transition flex items-center gap-2">
+              <span>Konsultasi Cepat via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: KATALOG PRODUK 3-LAYER               -->
+    <!-- ========================================== -->
+    <div id="view-catalog" class="view-panel hidden py-10 bg-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Catalog Header -->
+        <div class="bg-navy-900 rounded-2xl p-6 sm:p-8 text-white border border-navy-800 shadow-lg">
+          <div class="max-w-3xl space-y-3">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">Katalog Resmi Liebe Pyrus</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Katalog Merchandise & Souvenir B2B</h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Pilih produk dari ratusan pilihan suvenir kantor dan barang promosi berstandar korporat. Seluruh produk siap custom logo in-house.
+            </p>
+          </div>
+        </div>
+
+        <!-- LAYER 1: FILTER KATEGORI UTAMA -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-heading font-bold uppercase tracking-wider text-slate-500">Layer 1: Kategori Utama</span>
+            <button onclick="resetAllCatalogFilters()" class="text-xs text-gold-600 hover:text-gold-700 font-bold">Reset Semua Filter</button>
+          </div>
+          <div class="flex flex-wrap gap-2" id="catalog-category-tabs">
+            <button onclick="setCategoryFilter('all')" data-cat="all" class="cat-tab-btn px-4 py-2 rounded-full text-xs font-heading font-bold transition bg-navy-900 text-white shadow">
+              Semua Kategori (99+)
+            </button>
+            <button onclick="setCategoryFilter('gadget')" data-cat="gadget" class="cat-tab-btn px-4 py-2 rounded-full text-xs font-heading font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+              Gadget Elektronik
+            </button>
+            <button onclick="setCategoryFilter('tumbler')" data-cat="tumbler" class="cat-tab-btn px-4 py-2 rounded-full text-xs font-heading font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+              Tumbler SUS 304
+            </button>
+            <button onclick="setCategoryFilter('stationery')" data-cat="stationery" class="cat-tab-btn px-4 py-2 rounded-full text-xs font-heading font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+              Stationery & Agenda
+            </button>
+            <button onclick="setCategoryFilter('payung')" data-cat="payung" class="cat-tab-btn px-4 py-2 rounded-full text-xs font-heading font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+              Payung Promosi
+            </button>
+          </div>
+        </div>
+
+        <!-- LAYER 2: CHIP SUBKATEGORI DINAMIS -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-3">
+          <div class="text-xs font-heading font-bold uppercase tracking-wider text-slate-500">
+            Layer 2: Pilih Subkategori
+          </div>
+          <div class="flex flex-wrap gap-2" id="catalog-subcategories">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- LAYER 3: ATRIBUT SPESIFIK & PENCARIAN -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="text-xs font-heading font-bold uppercase tracking-wider text-slate-500">
+              Layer 3: Filter Atribut Teknis
+            </div>
+            <!-- Search bar -->
+            <div class="relative w-full sm:w-72">
+              <input type="text" id="catalog-search-input" oninput="handleCatalogSearch(this.value)" placeholder="Cari nama atau kode SKU LP-..." class="w-full pl-9 pr-4 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-gold-500 bg-slate-50">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+          </div>
+
+          <div id="layer3-container" class="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-500">
+            <!-- Populated or shows placeholder -->
+            <p id="layer3-placeholder">Pilih salah satu subkategori di Layer 2 di atas untuk mengaktifkan filter spesifikasi teknis (Kapasitas mAh, Material Stainless 304, dll.).</p>
+            <div id="layer3-attributes" class="hidden flex flex-wrap gap-4"></div>
+          </div>
+
+          <!-- Active Filter Chips -->
+          <div id="active-filters-bar" class="hidden pt-2 border-t border-slate-100 flex items-center gap-2 flex-wrap text-xs">
+            <span class="text-slate-500 font-semibold">Filter Aktif:</span>
+            <div id="active-chips-list" class="flex flex-wrap gap-1.5"></div>
+            <button onclick="resetAllCatalogFilters()" class="text-red-600 hover:underline font-semibold ml-2">Reset</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT GRID & RESULT COUNT -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between text-xs text-slate-500 font-medium px-1">
+            <span id="catalog-count-text">Menampilkan 24 produk</span>
+            <span class="text-slate-400">Harga final B2B disesuaikan dengan kuantiti & teknik cetak</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="catalog-product-grid">
+            <!-- Product cards injected by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: SEMINAR KIT FINDER                   -->
+    <!-- ========================================== -->
+    <div id="view-seminar-kit" class="view-panel hidden py-10 bg-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <div class="bg-navy-900 rounded-2xl p-6 sm:p-8 text-white border border-navy-800 shadow-lg">
+          <div class="max-w-3xl space-y-3">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">Interactive Event Kit Finder</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Paket Seminar Kit & Corporate Gift Box</h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Cari paket seminar kit sesuai plafon anggaran per peserta, jumlah isi item, jenis acara, dan jenis packaging. Siap cetak logo instansi & gratis digital proof.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4-DIMENSION FILTER TOOL -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm space-y-6">
+          <h2 class="font-heading font-bold text-base text-navy-950 flex items-center gap-2">
+            <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+            Filter 4 Dimensi Paket Seminar Kit
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- 1. Budget -->
+            <div class="space-y-2">
+              <label class="block text-xs font-heading font-bold uppercase tracking-wider text-slate-600">1. Budget / Peserta</label>
+              <select id="filter-kit-budget" onchange="renderSeminarKits()" class="w-full text-xs font-medium rounded-lg border border-slate-300 p-2.5 bg-slate-50 focus:ring-2 focus:ring-gold-500">
+                <option value="all">Semua Budget</option>
+                <option value="lt_50k">&lt; Rp 50.000 / kit</option>
+                <option value="50k_100k">Rp 50.000 – Rp 100.000</option>
+                <option value="100k_200k">Rp 100.000 – Rp 200.000</option>
+                <option value="200k_400k">Rp 200.000 – Rp 400.000</option>
+                <option value="gt_400k">&gt; Rp 400.000 / kit</option>
+              </select>
+            </div>
+
+            <!-- 2. Jumlah Item -->
+            <div class="space-y-2">
+              <label class="block text-xs font-heading font-bold uppercase tracking-wider text-slate-600">2. Jumlah Item</label>
+              <select id="filter-kit-items" onchange="renderSeminarKits()" class="w-full text-xs font-medium rounded-lg border border-slate-300 p-2.5 bg-slate-50 focus:ring-2 focus:ring-gold-500">
+                <option value="all">Semua Jumlah Item</option>
+                <option value="3">3 Item</option>
+                <option value="4">4 Item</option>
+                <option value="5">5 Item</option>
+                <option value="6">6+ Item</option>
+              </select>
+            </div>
+
+            <!-- 3. Jenis Acara -->
+            <div class="space-y-2">
+              <label class="block text-xs font-heading font-bold uppercase tracking-wider text-slate-600">3. Jenis Acara</label>
+              <select id="filter-kit-event" onchange="renderSeminarKits()" class="w-full text-xs font-medium rounded-lg border border-slate-300 p-2.5 bg-slate-50 focus:ring-2 focus:ring-gold-500">
+                <option value="all">Semua Acara</option>
+                <option value="Seminar">Seminar & Konferensi</option>
+                <option value="Workshop">Workshop / Pelatihan</option>
+                <option value="Diklat">Diklat Instansi</option>
+                <option value="Gathering">Gathering & Wisuda</option>
+                <option value="Onboarding">Onboarding Karyawan VIP</option>
+              </select>
+            </div>
+
+            <!-- 4. Packaging -->
+            <div class="space-y-2">
+              <label class="block text-xs font-heading font-bold uppercase tracking-wider text-slate-600">4. Kemasan / Packaging</label>
+              <select id="filter-kit-pack" onchange="renderSeminarKits()" class="w-full text-xs font-medium rounded-lg border border-slate-300 p-2.5 bg-slate-50 focus:ring-2 focus:ring-gold-500">
+                <option value="all">Semua Kemasan</option>
+                <option value="Paper Bag">Paper Bag Premium</option>
+                <option value="Tote Bag">Spunbond / Blacu Tote Bag</option>
+                <option value="Gift Box">Exclusive Hardbox / Gift Box</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMINAR KIT RESULTS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="seminar-kit-grid">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: LAYANAN CETAK 6 MESIN               -->
+    <!-- ========================================== -->
+    <div id="view-services" class="view-panel hidden py-10 bg-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <div class="bg-navy-900 rounded-2xl p-6 sm:p-8 text-white border border-navy-800 shadow-lg">
+          <div class="max-w-3xl space-y-3">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">Fasilitas Produksi In-House</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">6 Mesin & Teknik Cetak Logo Profesional</h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Cukup kirim file logo Anda (AI/EPS/PDF/PNG). Seluruh proses produksi kami tangani langsung dengan 6 mesin cetak in-house untuk memastikan ketajaman warna dan daya tahan logo.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 Techniques Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">UV</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">UV Digital Printing</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Full color, gradasi tajam, detail mikroskopis tahan lama.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Powerbank ABS, Tumbler Flat, Notebook Hardcover.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Mesin: Mimaki UJF-6042MkII Flatbed UV</div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">LSR</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">Laser Engraving (Grafir)</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Hasil ukiran elegan permanen, anti-luntur selamanya.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Tumbler Stainless Steel SUS 304, Pulpen Metal, Kayu.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Mesin: GCC LaserPro Spirit Fiber Laser</div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">HOT</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">Hot Stamping (Foil / Emboss)</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Efek mewah warna emas, perak, atau blind deboss cekung.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Agenda Kulit PU, Hardcover Notebook, Gift Box.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Mesin: Kluge EHG-300 Foil Stamper</div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">SBL</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">Sablon Presisi (Silkscreen)</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Warna solid stabil, ekonomis untuk partai ratusan hingga ribuan pcs.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Payung Lipat/Golf, Tumbler Silinder, Tote Bag Spunbond.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Tinta: High-Grade Industrial Epoxy Ink</div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">DTF</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">DTF UV (Stiker Kristal)</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Hasil timbul 3D mengkilap tanpa batas bidang datar.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Tumbler melengkung, kemasan mika, gadget plastik.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Karakteristik: Tahan gores & tahan cuci air</div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-3 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-xs">3D</div>
+            <h3 class="font-heading font-bold text-lg text-navy-950">Laser 3D Surface Engrave</h3>
+            <p class="text-xs text-slate-600"><strong>Terbaik untuk:</strong> Efek relief tekstur unik pada permukaan kemasan.</p>
+            <p class="text-xs text-slate-500"><strong>Cocok untuk:</strong> Wooden Box, Plakat Akrilik, Kemasan Eksklusif.</p>
+            <div class="text-[11px] text-slate-400 border-t pt-2">Presisi: Toleransi mikro 0.05 mm</div>
+          </div>
+        </div>
+
+        <!-- Custom Design Service Guarantee -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 space-y-3">
+              <span class="text-xs uppercase tracking-wider text-gold-600 font-bold">Layanan Artwork Gratis</span>
+              <h2 class="font-heading font-extrabold text-2xl text-navy-950">Tidak Punya File Vector? Kami Bantu Siapkan Mockup Gratis</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Tim desainer kami siap membantu menyesuaikan ukuran, memisahkan warna sablon, dan merender digital proof 3D ke produk pilihan Anda secara gratis sebelum produksi dimulai.
+              </p>
+            </div>
+            <div class="lg:col-span-4 text-center lg:text-right">
+              <a href="https://wa.me/6283843893244?text=Halo%20Liebe%20Pyrus%2C%20saya%20ingin%20berkonsultasi%20desain%20mockup%20logo%20untuk%20souvenir." target="_blank" class="inline-block px-5 py-3 rounded-lg bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-xs">
+                Kirim File Logo via WhatsApp &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: KUALITAS & GARANSI                   -->
+    <!-- ========================================== -->
+    <div id="view-quality" class="view-panel hidden py-10 bg-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <div class="bg-navy-900 rounded-2xl p-6 sm:p-8 text-white border border-navy-800 shadow-lg">
+          <div class="max-w-3xl space-y-3">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">Standar Fisik & Akuntabilitas</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Kualitas Bukan Klaim. Ini Standar Kami.</h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Setiap produk yang meninggalkan gudang kami telah melalui 4 tahap pemeriksaan ketat. Reputasi reseller dan perusahaan Anda adalah prioritas nomor satu kami.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-2">
+            <div class="text-3xl font-heading font-extrabold text-gold-500">100%</div>
+            <div class="font-heading font-bold text-sm text-navy-950">QC Fisik 1-per-1</div>
+            <p class="text-xs text-slate-500">Setiap unit botol, payung, dan buku diperiksa tanpa sampel acak.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-2">
+            <div class="text-3xl font-heading font-extrabold text-gold-500">12 Bulan</div>
+            <div class="font-heading font-bold text-sm text-navy-950">Garansi Elektronik</div>
+            <p class="text-xs text-slate-500">Ganti unit baru bila ada cacat fungsi pada baterai atau komponen sirkuit.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-2">
+            <div class="text-3xl font-heading font-extrabold text-gold-500">SUS 304</div>
+            <div class="font-heading font-bold text-sm text-navy-950">Food Grade Lab Test</div>
+            <p class="text-xs text-slate-500">Material dalam tumbler bebas racun BPA dan aman kontak dengan air panas/dingin.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-2">
+            <div class="text-3xl font-heading font-extrabold text-gold-500">0 Biaya</div>
+            <div class="font-heading font-bold text-sm text-navy-950">Mockup Persetujuan</div>
+            <p class="text-xs text-slate-500">Preview digital visual dikirim sebelum pencetakan massal dimulai.</p>
+          </div>
+        </div>
+
+        <!-- 4-Stage QC Detail -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-8 space-y-6">
+          <h2 class="font-heading font-extrabold text-2xl text-navy-950">4 Tahap Quality Control Liebe Pyrus</h2>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-2">
+              <span class="text-xs bg-navy-900 text-white font-bold px-2 py-0.5 rounded">Tahap 1</span>
+              <h3 class="font-heading font-bold text-sm text-navy-950">Pemeriksaan Visual</h3>
+              <p class="text-xs text-slate-600">Mengecek tidak ada goresan, denting material, atau cacat lapisan cat.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-2">
+              <span class="text-xs bg-navy-900 text-white font-bold px-2 py-0.5 rounded">Tahap 2</span>
+              <h3 class="font-heading font-bold text-sm text-navy-950">Uji Fungsional</h3>
+              <p class="text-xs text-slate-600">Menguji arus output baterai, pairing Bluetooth TWS, dan mekanisme buka payung.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-2">
+              <span class="text-xs bg-navy-900 text-white font-bold px-2 py-0.5 rounded">Tahap 3</span>
+              <h3 class="font-heading font-bold text-sm text-navy-950">Quality Check Logo</h3>
+              <p class="text-xs text-slate-600">Memeriksa akurasi warna Pantone, ketepatan posisi cetak, dan daya rekat tinta.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-2">
+              <span class="text-xs bg-navy-900 text-white font-bold px-2 py-0.5 rounded">Tahap 4</span>
+              <h3 class="font-heading font-bold text-sm text-navy-950">Pemeriksaan Kemasan</h3>
+              <p class="text-xs text-slate-600">Pemberian bubble wrap dan segel karton luar yang kokoh untuk kiriman ekspedisi.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: KONTAK & RFQ FORM (WITH OTP MODAL)   -->
+    <!-- ========================================== -->
+    <div id="view-contact" class="view-panel hidden py-10 bg-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        
+        <div class="bg-navy-900 rounded-2xl p-6 sm:p-8 text-white border border-navy-800 shadow-lg">
+          <div class="max-w-3xl space-y-3">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">Konsultasi Penawaran B2B</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Hubungi Tim Sales Liebe Pyrus</h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Kirimkan rincian kebutuhan souvenir atau paket seminar kit perusahaan Anda. Dilengkapi proteksi verifikasi OTP email anti-spam agar penawaran resmi langsung diprioritaskan.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Contact Form -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <h2 class="font-heading font-bold text-xl text-navy-950">Formulir Permintaan Penawaran Resmi (RFQ)</h2>
+            
+            <form id="contact-rfq-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Nama Lengkap *</label>
+                  <input type="text" id="rfq-name" required placeholder="Budi Santoso" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Nama Perusahaan / Instansi *</label>
+                  <input type="text" id="rfq-company" required placeholder="PT Nusantara Maju" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Nomor WhatsApp / HP *</label>
+                  <input type="tel" id="rfq-phone" required placeholder="081234567890" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Email Perusahaan (Verifikasi OTP) *</label>
+                  <input type="email" id="rfq-email" required placeholder="procurement@perusahaan.co.id" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Kategori Produk yang Diminati *</label>
+                <select id="rfq-category" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500 bg-white">
+                  <option value="Gadget">Gadget & Elektronik (Powerbank, TWS, USB)</option>
+                  <option value="Tumbler">Tumbler Stainless Steel SUS 304</option>
+                  <option value="Stationery">Stationery, Agenda Kulit, & Pen Set</option>
+                  <option value="Payung">Payung Promosi (Lipat 3 / Golf / Kapsul)</option>
+                  <option value="Seminar Kit">Paket Seminar Kit Custom Lengkap</option>
+                  <option value="Lainnya">Kebutuhan Custom Lainnya</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-heading font-bold text-slate-700 mb-1">Detail Kebutuhan & Estimasi Quantity *</label>
+                <textarea id="rfq-message" rows="4" required placeholder="Contoh: Butuh penawaran 200 pcs tumbler SUS 304 grafir laser logo untuk acara gathering bulan depan." class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500"></textarea>
+              </div>
+
+              <div id="rfq-feedback" class="text-xs hidden p-3 rounded-lg"></div>
+
+              <button type="submit" class="w-full py-3.5 rounded-lg bg-navy-900 hover:bg-navy-800 text-gold-400 font-heading font-bold text-sm transition flex items-center justify-center gap-2">
+                <span>Kirim Pesan & Verifikasi OTP</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Direct Contacts -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+              <h3 class="font-heading font-bold text-lg text-navy-950">Kontak Cepat Tim Sales</h3>
+              <div class="space-y-3 text-xs text-slate-600">
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <div class="p-2 rounded bg-emerald-100 text-emerald-700 font-bold">WA</div>
+                  <div>
+                    <div class="font-heading font-bold text-slate-800">WhatsApp Sales B2B</div>
+                    <div class="text-slate-500">Respon tercepat &lt; 1 jam kerja</div>
+                    <a href="https://wa.me/6283843893244" target="_blank" class="text-emerald-700 font-bold hover:underline">+62 838-4389-3244</a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <div class="p-2 rounded bg-navy-100 text-navy-800 font-bold">EM</div>
+                  <div>
+                    <div class="font-heading font-bold text-slate-800">Email Resmi RFQ</div>
+                    <div class="text-slate-500">Respon &lt; 24 jam</div>
+                    <a href="mailto:hello@liebepyrus.co.id" class="text-navy-900 font-bold hover:underline">hello@liebepyrus.co.id</a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <div class="p-2 rounded bg-gold-100 text-gold-700 font-bold">LK</div>
+                  <div>
+                    <div class="font-heading font-bold text-slate-800">Showroom & Workshop</div>
+                    <div class="text-slate-500">Jakarta Pusat, DKI Jakarta 10130, Indonesia</div>
+                    <div class="text-[11px] text-slate-400">Senin - Jumat 09.00 - 17.30 WIB</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Badge -->
+            <div class="p-4 rounded-xl bg-navy-900 text-white text-xs space-y-1.5 border border-navy-800">
+              <div class="text-gold-400 font-heading font-bold flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path></svg>
+                Jaminan Kerahasiaan Data
+              </div>
+              <p class="text-slate-300">Data dan dokumen logo perusahaan Anda dilindungi NDA serta tidak pernah disebarluaskan ke pihak ketiga.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODAL: OTP VERIFICATION (INTERACTIVE)      -->
+  <!-- ========================================== -->
+  <div id="otp-modal" class="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="font-heading font-bold text-lg text-navy-950">Verifikasi OTP Email</h3>
+        <button onclick="closeOtpModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Untuk memastikan keamanan dan mencegah spam bot, kode OTP 6-digit telah dikirimkan ke: <strong id="otp-target-email" class="text-navy-900"></strong>.
+      </p>
+
+      <div class="bg-gold-50 border border-gold-200 rounded-lg p-3 text-xs text-gold-900 space-y-1">
+        <div class="font-bold">Simulasi OTP Aktif:</div>
+        <p>Kode OTP simulasi Anda: <span id="otp-simulated-code" class="font-mono font-extrabold text-sm text-navy-950 bg-white px-2 py-0.5 rounded border border-gold-300"></span></p>
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-xs font-heading font-bold text-slate-700">Masukkan 6 Digit Kode OTP</label>
+        <input type="text" id="otp-input" maxlength="6" placeholder="123456" class="w-full text-center text-xl font-mono tracking-widest p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500">
+        <div id="otp-feedback" class="text-xs hidden p-2 rounded"></div>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-slate-500">
+        <button id="otp-resend-btn" onclick="resendOtp()" disabled class="text-slate-400 font-medium">Kirim Ulang OTP (60s)</button>
+        <span class="text-slate-400">Berlaku 10 menit</span>
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <button onclick="closeOtpModal()" class="w-1/2 py-2.5 rounded-lg border border-slate-300 text-slate-600 font-heading font-semibold text-xs hover:bg-slate-50">Batal</button>
+        <button onclick="verifyOtpAndSend()" class="w-1/2 py-2.5 rounded-lg bg-navy-900 text-gold-400 font-heading font-bold text-xs hover:bg-navy-800">Verifikasi & Kirim</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: PRODUCT DETAIL (PDP)               -->
+  <!-- ========================================== -->
+  <div id="product-modal" class="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200">
+      <div class="flex items-start justify-between border-b pb-4">
+        <div>
+          <span id="modal-product-cat" class="text-xs font-heading font-bold uppercase tracking-wider text-gold-600">Gadget · Powerbank</span>
+          <h3 id="modal-product-title" class="font-heading font-extrabold text-2xl text-navy-950">Nama Produk</h3>
+          <p id="modal-product-sku" class="text-xs text-slate-400 font-mono mt-0.5">SKU: LP-PB100-01</p>
+        </div>
+        <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none">&times;</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <div class="space-y-3">
+          <div class="h-64 rounded-xl bg-slate-900 border border-slate-200 flex items-center justify-center text-gold-400 font-heading font-extrabold text-4xl" id="modal-product-media">
+            LP
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-heading font-bold text-slate-600">Varian Warna:</span>
+            <div id="modal-product-colors" class="flex gap-2"></div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p id="modal-product-desc" class="text-xs text-slate-600 leading-relaxed"></p>
+
+          <div class="space-y-1">
+            <span class="text-xs font-heading font-bold text-slate-700">Teknik Cetak yang Didukung:</span>
+            <div id="modal-product-prints" class="flex flex-wrap gap-1.5 pt-1"></div>
+          </div>
+
+          <div class="border rounded-lg overflow-hidden text-xs">
+            <table class="w-full text-left" id="modal-product-specs">
+              <!-- Injected by JS -->
+            </table>
+          </div>
+
+          <div class="pt-2">
+            <a id="modal-wa-btn" href="#" target="_blank" class="w-full py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-xs flex items-center justify-center gap-2 transition shadow">
+              <span>Minta Penawaran Resmi via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: PROMPT & BLUEPRINT VIEWER           -->
+  <!-- ========================================== -->
+  <div id="prompt-modal" class="fixed inset-0 z-50 bg-navy-950/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="p-6 bg-navy-900 text-white flex items-center justify-between border-b border-navy-800">
+        <div>
+          <span class="text-xs text-gold-400 font-bold uppercase tracking-widest">Liebe Pyrus AI Suite</span>
+          <h3 class="font-heading font-extrabold text-xl">Master Prompt & Blueprint Dokumentasi</h3>
+        </div>
+        <button onclick="closePromptViewer()" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
+      </div>
+
+      <div class="flex border-b border-slate-200 bg-slate-50 px-6 pt-3 gap-2 overflow-x-auto text-xs font-heading font-bold">
+        <button onclick="switchPromptTab('master')" id="tab-btn-master" class="py-2.5 px-4 border-b-2 border-gold-500 text-gold-600">00. Master Prompt</button>
+        <button onclick="switchPromptTab('phase')" id="tab-btn-phase" class="py-2.5 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-800">01. Phase Prompts (1-6)</button>
+        <button onclick="switchPromptTab('prd')" id="tab-btn-prd" class="py-2.5 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-800">01. PRD (Requirements)</button>
+      </div>
+
+      <div class="p-6 overflow-y-auto flex-grow custom-scrollbar space-y-4">
+        <div class="flex items-center justify-between">
+          <p class="text-xs text-slate-500">Salin prompt di bawah ini langsung ke AI Coding Agent Anda (Antigravity, Cursor, Claude Code, dll.):</p>
+          <button onclick="copyCurrentPrompt()" id="copy-prompt-btn" class="px-4 py-1.5 rounded bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-xs flex items-center gap-1 shadow">
+            Salin Prompt
+          </button>
+        </div>
+        <textarea id="prompt-textarea" readonly class="w-full h-80 font-mono text-xs p-4 rounded-xl bg-navy-950 text-slate-200 border border-slate-300 focus:outline-none custom-scrollbar"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPORATE FOOTER -->
+  <footer class="bg-navy-950 text-slate-300 text-xs border-t border-navy-800 pt-12 pb-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Col 1 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded bg-gold-500 flex items-center justify-center font-heading font-bold text-navy-950 text-sm">LP</div>
+            <span class="font-heading font-extrabold text-base text-white tracking-wider">LIEBE PYRUS</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-xs">
+            PT Liebe Pyrus Indonesia — Supplier merchandise & souvenir promosi perusahaan di Jakarta dengan 6 mesin cetak in-house. Satu vendor, satu invoice.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider">Kategori Produk</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><button onclick="showView('catalog'); setCategoryFilter('gadget')" class="hover:text-gold-400">Gadget & Powerbank</button></li>
+            <li><button onclick="showView('catalog'); setCategoryFilter('tumbler')" class="hover:text-gold-400">Tumbler SUS 304</button></li>
+            <li><button onclick="showView('catalog'); setCategoryFilter('stationery')" class="hover:text-gold-400">Stationery & Agenda</button></li>
+            <li><button onclick="showView('catalog'); setCategoryFilter('payung')" class="hover:text-gold-400">Payung Custom Logo</button></li>
+            <li><button onclick="showView('seminar-kit')" class="hover:text-gold-400">Paket Seminar Kit</button></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider">Layanan & Jaminan</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><button onclick="showView('services')" class="hover:text-gold-400">Layanan Cetak 6 Mesin</button></li>
+            <li><button onclick="showView('services')" class="hover:text-gold-400">Custom Design & Mockup</button></li>
+            <li><button onclick="showView('quality')" class="hover:text-gold-400">Standar Kualitas & QC</button></li>
+            <li><button onclick="showView('quality')" class="hover:text-gold-400">Garansi 1 Tahun Elektronik</button></li>
+            <li><button onclick="openPromptViewer()" class="hover:text-gold-400 text-gold-400 font-bold">Blueprint & Master Prompt AI</button></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider">Kontak Kantor</h4>
+          <p class="text-slate-400 leading-relaxed text-xs">
+            Jl. Petojo Barat IV No. 1A, Jakarta Pusat, DKI Jakarta 10130, Indonesia<br>
+            Email: <a href="mailto:hello@liebepyrus.co.id" class="text-white hover:underline">hello@liebepyrus.co.id</a><br>
+            WhatsApp: <a href="https://wa.me/6283843893244" class="text-emerald-400 font-bold hover:underline">+62 838-4389-3244</a><br>
+            Jam: Sen - Jum (09.00 - 17.30 WIB)
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-navy-800/80 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
+        <p>&copy; 2026 PT Liebe Pyrus Indonesia. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="https://github.com/dandirayo/Liebe-B2B" target="_blank" class="hover:text-slate-400">GitHub Repository</a>
+          <button onclick="openPromptViewer()" class="hover:text-slate-400">Dokumentasi PRD</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT APPLICATION LOGIC               -->
+  <!-- ========================================== -->
   <script>
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'neutral',
-      themeVariables: {
-        primaryColor: '#0F1D35',
-        primaryTextColor: '#FFFFFF',
-        primaryBorderColor: '#C89B3C',
-        lineColor: '#C89B3C',
-        secondaryColor: '#F8F7F4',
-        tertiaryColor: '#FFFFFF'
+    // ---------------------------------------------
+    // DATA STORE: 24 PRODUCTS WITH B2B SPECS
+    // ---------------------------------------------
+    const PRODUCTS = [
+      {
+        id: 'LP-PB100-01',
+        sku: 'LP-PB100-01',
+        name: 'Powerbank 10.000mAh Slim ABS Custom Logo',
+        category: 'gadget',
+        subcategory: 'powerbank',
+        badge: 'Unggulan',
+        capacity: '10000',
+        material: 'ABS',
+        feature: 'Fast Charging',
+        moq: 50,
+        warranty: '12 Bulan',
+        logoArea: '35 × 35 mm',
+        size: '102.9 × 50 × 17.8 mm',
+        weight: '120 gr',
+        prints: ['UV Digital Printing', 'Grafir Laser', 'Sablon'],
+        colors: [{name:'Hitam', hex:'#1E293B'}, {name:'Putih', hex:'#F8FAFC'}],
+        desc: 'Powerbank kapasitas 10.000mAh cukup untuk 2-3 kali pengisian smartphone. Bodi ABS datar memudahkan cetak logo dengan presisi tinggi dan awet.'
+      },
+      {
+        id: 'LP-PW050-01',
+        sku: 'LP-PW050-01',
+        name: 'Powerbank Wireless Magnetik 5.000mAh Lanyard',
+        category: 'gadget',
+        subcategory: 'powerbank',
+        badge: 'Baru',
+        capacity: '5000',
+        material: 'ABS',
+        feature: 'Wireless Charging',
+        moq: 50,
+        warranty: '12 Bulan',
+        logoArea: '30 × 30 mm',
+        size: '95 × 62 × 14 mm',
+        weight: '98 gr',
+        prints: ['UV Digital Printing', 'Sablon'],
+        colors: [{name:'Navy', hex:'#0F1D35'}, {name:'Putih', hex:'#FFFFFF'}],
+        desc: 'Pengisian daya nirkabel magnetik ringkas dilengkapi kabel lanyard terintegrasi. Hadiah ideal untuk eksekutif dengan mobilitas tinggi.'
+      },
+      {
+        id: 'LP-TWS-02',
+        sku: 'LP-TWS-02',
+        name: 'TWS Earphone Bluetooth 5.3 Touch Control',
+        category: 'gadget',
+        subcategory: 'tws',
+        badge: 'Unggulan',
+        capacity: 'N/A',
+        material: 'ABS',
+        feature: 'Touch Control',
+        moq: 50,
+        warranty: '12 Bulan',
+        logoArea: '25 × 20 mm (Case)',
+        size: '54 × 45 × 22 mm',
+        weight: '45 gr',
+        prints: ['UV Digital Printing', 'Sablon'],
+        colors: [{name:'Putih', hex:'#FFFFFF'}, {name:'Hitam', hex:'#0F172A'}],
+        desc: 'Suara jernih dengan latency rendah dan total daya baterai case hingga 24 jam. Logo perusahaan dicetak tajam pada bagian tutup charging case.'
+      },
+      {
+        id: 'LP-FDWD-02',
+        sku: 'LP-FDWD-02',
+        name: 'USB Flash Drive Kayu Oval Laser Engraving',
+        category: 'gadget',
+        subcategory: 'flashdisk',
+        badge: 'Baru',
+        capacity: '32GB',
+        material: 'Kayu Alami',
+        feature: 'Eco-Friendly',
+        moq: 50,
+        warranty: '12 Bulan',
+        logoArea: '30 × 15 mm',
+        size: '60 × 28 × 10 mm',
+        weight: '18 gr',
+        prints: ['Grafir Laser', 'UV Digital Printing'],
+        colors: [{name:'Maple Wood', hex:'#D4A373'}, {name:'Walnut Dark', hex:'#582F0E'}],
+        desc: 'Material kayu ramah lingkungan dengan tutup putar magnetik. Ukiran grafir laser permanen dan bernuansa premium.'
+      },
+      {
+        id: 'LP-TMB304-01',
+        sku: 'LP-TMB304-01',
+        name: 'Vacuum Flask Stainless Steel SUS 304 500ml Zenith',
+        category: 'tumbler',
+        subcategory: 'vacuum-tumbler',
+        badge: 'Unggulan',
+        capacity: '500ml',
+        material: 'SUS 304 Food Grade',
+        feature: 'Tahan Panas 12 Jam',
+        moq: 50,
+        warranty: 'QC Lab Test',
+        logoArea: '35 × 120 mm',
+        size: '225 × 65 mm',
+        weight: '275 gr',
+        prints: ['Grafir Laser', 'Sablon', 'UV Digital Printing', 'DTF UV'],
+        colors: [{name:'Matte Black', hex:'#1E293B'}, {name:'Silver Stainless', hex:'#94A3B8'}, {name:'Navy Blue', hex:'#0F1D35'}],
+        desc: 'Material bagian dalam teruji lab independen stainless steel grade SUS 304 aman untuk minuman. Menjaga suhu panas dan dingin hingga 12 jam.'
+      },
+      {
+        id: 'LP-CUP304-02',
+        sku: 'LP-CUP304-02',
+        name: 'Insulated Coffee Cup SUS 304 350ml Macaron',
+        category: 'tumbler',
+        subcategory: 'coffee-cup',
+        badge: 'Baru',
+        capacity: '350ml',
+        material: 'SUS 304 Food Grade',
+        feature: 'Anti-Tumpah',
+        moq: 50,
+        warranty: 'QC Lab Test',
+        logoArea: '35 × 35 mm',
+        size: '140 × 80 mm',
+        weight: '190 gr',
+        prints: ['Grafir Laser', 'Sablon', 'DTF UV'],
+        colors: [{name:'Cream White', hex:'#FDF0D5'}, {name:'Sage Green', hex:'#84A98C'}, {name:'Midnight', hex:'#1A202C'}],
+        desc: 'Tumbler kopi ringkas dengan tutup flip anti-bocor. Pilihan favorit untuk seminar dan suvenir karyawan kantor modern.'
+      },
+      {
+        id: 'LP-UML3-01',
+        sku: 'LP-UML3-01',
+        name: 'Payung Lipat 3 Otomatis Anti-UV Black Coating',
+        category: 'payung',
+        subcategory: 'payung-lipat-3',
+        badge: 'Unggulan',
+        capacity: 'Diameter 98 cm',
+        material: 'Pongee Black UV',
+        feature: 'Tombol Otomatis',
+        moq: 25,
+        warranty: 'QC 1-per-1',
+        logoArea: '150 × 100 mm per Panel',
+        size: 'Panjang lipat 28 cm',
+        weight: '340 gr',
+        prints: ['Sablon Presisi', 'DTF Print'],
+        colors: [{name:'Navy', hex:'#0F1D35'}, {name:'Hitam', hex:'#18181B'}, {name:'Maroon', hex:'#7F1D1D'}],
+        desc: 'Lapisan dalam black coating UPF 50+ melindungi dari panas matahari dan hujan lebat. Rangka fiber fleksibel tahan terpaan angin.'
+      },
+      {
+        id: 'LP-UMGF-01',
+        sku: 'LP-UMGF-01',
+        name: 'Payung Golf Double Layer Fiber Windproof 30 Inch',
+        category: 'payung',
+        subcategory: 'payung-golf',
+        badge: 'Unggulan',
+        capacity: 'Diameter 130 cm',
+        material: 'Fiberglass & Pongee',
+        feature: 'Double Canopy Angin',
+        moq: 25,
+        warranty: 'QC 1-per-1',
+        logoArea: '220 × 150 mm per Panel',
+        size: 'Panjang 100 cm',
+        weight: '580 gr',
+        prints: ['Sablon Presisi'],
+        colors: [{name:'Hitam / Silver', hex:'#27272A'}, {name:'Navy / Putih', hex:'#1E3A8A'}],
+        desc: 'Payung golf premium ukuran besar dengan ventilasi kanopi ganda penahan angin. Suvenir bergengsi untuk klien VIP dan direksi.'
+      },
+      {
+        id: 'LP-NBK-A501',
+        sku: 'LP-NBK-A501',
+        name: 'Notebook Hardcover PU Leather A5 Strap Elastis',
+        category: 'stationery',
+        subcategory: 'notebook',
+        badge: 'Unggulan',
+        capacity: '192 Halaman',
+        material: 'PU Leather & Bookpaper',
+        feature: 'Pita & Tali Elastis',
+        moq: 50,
+        warranty: 'QC 1-per-1',
+        logoArea: '70 × 40 mm',
+        size: '210 × 145 mm (A5)',
+        weight: '310 gr',
+        prints: ['Hot Stamping (Foil Emas/Perak)', 'Deboss', 'UV Printing'],
+        colors: [{name:'Tan Brown', hex:'#9C6644'}, {name:'Classic Navy', hex:'#0F1D35'}, {name:'Charcoal', hex:'#2B2D42'}],
+        desc: 'Cover kulit sintetis bertekstur elegan dengan kertas bookpaper 80 gsm nyaman untuk ditulisi. Logo dicetak deboss atau foil emas.'
+      },
+      {
+        id: 'LP-PEN-01',
+        sku: 'LP-PEN-01',
+        name: 'Pulpen Metal Eksekutif Klip Chrome LP-PEN01',
+        category: 'stationery',
+        subcategory: 'pen',
+        badge: 'Populer',
+        capacity: 'Refill 0.5mm',
+        material: 'Metal Brass',
+        feature: 'Heavyweight',
+        moq: 100,
+        warranty: 'QC 1-per-1',
+        logoArea: '40 × 6 mm',
+        size: '138 × 10 mm',
+        weight: '28 gr',
+        prints: ['Grafir Laser'],
+        colors: [{name:'Hitam Matte', hex:'#18181B'}, {name:'Silver Glossy', hex:'#E2E8F0'}],
+        desc: 'Pulpen berbobot mantap dengan ukiran laser mengilap warna emas/perak. Selalu menjadi pelengkap terbaik pada agenda dan seminar kit.'
       }
-    });
+    ];
 
-    let mermaidId = 0;
+    // ---------------------------------------------
+    // SEMINAR KITS DATA
+    // ---------------------------------------------
+    const SEMINAR_KITS = [
+      {
+        id: 'kit-01',
+        name: 'Kit Seminar Esensial 3 Item',
+        budgetTier: 'lt_50k',
+        budgetLabel: 'Rp < 50rb / kit',
+        itemCount: 3,
+        eventType: 'Seminar',
+        packaging: 'Paper Bag',
+        items: ['Notebook A5 Softcover', 'Pulpen Promosi', 'Paper Bag Custom'],
+        desc: 'Solusi hemat dan ringkas untuk acara seminar mahasiswa, workshop edukasi, atau sosialisasi massal.'
+      },
+      {
+        id: 'kit-02',
+        name: 'Kit Workshop Produktif 4 Item',
+        budgetTier: '50k_100k',
+        budgetLabel: 'Rp 50–100rb / kit',
+        itemCount: 4,
+        eventType: 'Workshop',
+        packaging: 'Tote Bag',
+        items: ['Notebook A5 Hardcover', 'Pulpen Metal', 'Tote Bag Blacu', 'Lanyard + ID Card'],
+        desc: 'Paket praktis untuk pelatihan kerja dan seminar korporat. Tote bag dapat dipakai ulang oleh peserta.'
+      },
+      {
+        id: 'kit-03',
+        name: 'Kit Diklat Instansi Formal 4 Item',
+        budgetTier: '100k_200k',
+        budgetLabel: 'Rp 100–200rb / kit',
+        itemCount: 4,
+        eventType: 'Diklat',
+        packaging: 'Gift Box',
+        items: ['Agenda Kulit PU Klip Magnet', 'Pulpen Metal Eksekutif', 'Tumbler SUS 304 500ml', 'Hardbox Eksklusif'],
+        desc: 'Paket standar instansi kementerian, BUMN, dan pelatihan dinas. Dikemas dalam kotak kado tebal berlogo foil.'
+      },
+      {
+        id: 'kit-04',
+        name: 'Kit Executive VIP Onboarding 5 Item',
+        budgetTier: '200k_400k',
+        budgetLabel: 'Rp 200–400rb / kit',
+        itemCount: 5,
+        eventType: 'Onboarding',
+        packaging: 'Gift Box',
+        items: ['Powerbank Slim 10.000mAh', 'Vacuum Tumbler SUS 304', 'Agenda PU Leather A5', 'Pulpen Metal', 'Custom Hardbox'],
+        desc: 'Paket suvenir selamat datang untuk karyawan baru atau hadiah apresiasi pembicara seminar VIP.'
+      }
+    ];
 
-    window.$docsify = {
-      name: '<span class="gold">LIEBE PYRUS</span> B2B',
-      repo: 'https://github.com/dandirayo/Liebe-B2B',
-      loadSidebar: true,
-      loadNavbar: true,
-      auto2top: true,
-      subMaxLevel: 3,
-      relativePath: true,
-      search: {
-        maxAge: 86400000,
-        paths: 'auto',
-        placeholder: 'Cari modul, PRD, atau prompt...',
-        noData: 'Tidak ada hasil ditemukan.',
-        depth: 3
-      },
-      copyCode: {
-        buttonText: 'Salin',
-        errorText: 'Gagal',
-        successText: 'Tersalin!'
-      },
-      markdown: {
-        renderer: {
-          code: function(code, lang) {
-            if (lang === "mermaid") {
-              return '<div class="mermaid">' + code + '</div>';
-            }
-            return this.origin.code.apply(this, arguments);
-          }
-        }
-      },
-      plugins: [
-        function(hook, vm) {
-          hook.doneEach(function() {
-            if (window.mermaid) {
-              window.mermaid.run({
-                nodes: document.querySelectorAll('.mermaid')
-              });
-            }
-          });
-        }
+    // ---------------------------------------------
+    // STATE MANAGEMENT
+    // ---------------------------------------------
+    let currentCategory = 'all';
+    let currentSubcategory = 'all';
+    let currentSearch = '';
+    let selectedAttributeFilter = null;
+    let waRefCode = null;
+
+    // Check Google Ads Attribution (gclid) simulation
+    function initWaAttribution() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasAdClick = urlParams.get('gclid') || urlParams.get('utm_campaign');
+      
+      // Read existing cookie or simulate
+      const match = document.cookie.match(/lp_ref=([^;]+)/);
+      if (match) {
+        waRefCode = match[1];
+      } else if (hasAdClick) {
+        waRefCode = 'LPY-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+        document.cookie = `lp_ref=${waRefCode}; max-age=7776000; path=/`;
+      }
+    }
+    initWaAttribution();
+
+    // ---------------------------------------------
+    // NAVIGATION & VIEW SWITCHING
+    // ---------------------------------------------
+    function showView(viewName) {
+      document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('nav button').forEach(el => {
+        el.classList.remove('text-gold-400', 'font-semibold');
+      });
+
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.classList.add('text-gold-400', 'font-semibold');
+      }
+
+      if (viewName === 'catalog') {
+        renderCatalog();
+      } else if (viewName === 'seminar-kit') {
+        renderSeminarKits();
+      }
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ---------------------------------------------
+    // KATALOG 3-LAYER LOGIC
+    // ---------------------------------------------
+    const SUBCATS = {
+      gadget: [
+        { id: 'powerbank', name: 'Powerbank' },
+        { id: 'tws', name: 'TWS Earphone' },
+        { id: 'flashdisk', name: 'USB Flashdrive' }
+      ],
+      tumbler: [
+        { id: 'vacuum-tumbler', name: 'Vacuum Flask SUS 304' },
+        { id: 'coffee-cup', name: 'Coffee Cup 350ml' }
+      ],
+      payung: [
+        { id: 'payung-lipat-3', name: 'Payung Lipat 3' },
+        { id: 'payung-golf', name: 'Payung Golf' }
+      ],
+      stationery: [
+        { id: 'notebook', name: 'Notebook A5' },
+        { id: 'pen', name: 'Pulpen Metal' }
       ]
     };
-  </script>
 
-  <!-- Docsify Core -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-  <!-- Search Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-  <!-- Copy Code Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <!-- Image Zoom Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-  <!-- Syntax Highlighting (Prism) -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+    function filterByMainCategory(catId) {
+      showView('catalog');
+      setCategoryFilter(catId);
+    }
+
+    function setCategoryFilter(catId) {
+      currentCategory = catId;
+      currentSubcategory = 'all';
+      selectedAttributeFilter = null;
+
+      // Update Tab Styles
+      document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+        const isMatch = btn.getAttribute('data-cat') === catId;
+        btn.className = `cat-tab-btn px-4 py-2 rounded-full text-xs font-heading transition ${
+          isMatch ? 'bg-navy-900 text-white font-bold shadow' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 font-semibold'
+        }`;
+      });
+
+      renderSubcategories();
+      renderLayer3();
+      renderCatalog();
+    }
+
+    function setSubcategoryFilter(subId) {
+      currentSubcategory = subId;
+      selectedAttributeFilter = null;
+      renderSubcategories();
+      renderLayer3();
+      renderCatalog();
+    }
+
+    function renderSubcategories() {
+      const subcatContainer = document.getElementById('catalog-subcategories');
+      subcatContainer.innerHTML = '';
+
+      let list = [];
+      if (currentCategory === 'all') {
+        Object.values(SUBCATS).forEach(items => list.push(...items));
+      } else {
+        list = SUBCATS[currentCategory] || [];
+      }
+
+      // "Semua Sub" chip
+      const allActive = currentSubcategory === 'all';
+      const allBtn = document.createElement('button');
+      allBtn.className = `px-3 py-1.5 rounded-lg text-xs font-heading transition ${
+        allActive ? 'bg-gold-500 text-navy-950 font-bold shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-medium'
+      }`;
+      allBtn.textContent = 'Semua Subkategori';
+      allBtn.onclick = () => setSubcategoryFilter('all');
+      subcatContainer.appendChild(allBtn);
+
+      list.forEach(item => {
+        const isActive = currentSubcategory === item.id;
+        const btn = document.createElement('button');
+        btn.className = `px-3 py-1.5 rounded-lg text-xs font-heading transition ${
+          isActive ? 'bg-gold-500 text-navy-950 font-bold shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-medium'
+        }`;
+        btn.textContent = item.name;
+        btn.onclick = () => setSubcategoryFilter(item.id);
+        subcatContainer.appendChild(btn);
+      });
+    }
+
+    function renderLayer3() {
+      const container = document.getElementById('layer3-container');
+      const placeholder = document.getElementById('layer3-placeholder');
+      const attributesEl = document.getElementById('layer3-attributes');
+
+      if (currentSubcategory === 'all') {
+        placeholder.classList.remove('hidden');
+        attributesEl.classList.add('hidden');
+        return;
+      }
+
+      placeholder.classList.add('hidden');
+      attributesEl.classList.remove('hidden');
+      attributesEl.innerHTML = '';
+
+      // Sample attribute chips based on subcategory
+      let options = [];
+      if (currentSubcategory === 'powerbank') {
+        options = ['5.000 mAh', '10.000 mAh', 'Wireless Charging'];
+      } else if (currentSubcategory === 'vacuum-tumbler') {
+        options = ['SUS 304 Food Grade', '500ml', 'Tahan Panas 12 Jam'];
+      } else if (currentSubcategory === 'payung-lipat-3') {
+        options = ['Tombol Otomatis', 'Pongee Black UV'];
+      } else {
+        options = ['Bahan Premium', 'Custom Logo Ready'];
+      }
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'font-bold text-slate-700 mr-2 flex items-center';
+      labelSpan.textContent = 'Filter Spesifikasi:';
+      attributesEl.appendChild(labelSpan);
+
+      options.forEach(opt => {
+        const isSelected = selectedAttributeFilter === opt;
+        const chip = document.createElement('button');
+        chip.className = `px-2.5 py-1 rounded text-[11px] font-medium border transition ${
+          isSelected ? 'bg-navy-900 text-gold-400 border-navy-900 font-bold' : 'bg-white text-slate-600 border-slate-300 hover:border-gold-500'
+        }`;
+        chip.textContent = opt;
+        chip.onclick = () => {
+          selectedAttributeFilter = isSelected ? null : opt;
+          renderLayer3();
+          renderCatalog();
+        };
+        attributesEl.appendChild(chip);
+      });
+    }
+
+    function handleCatalogSearch(term) {
+      currentSearch = (term || '').toLowerCase().trim();
+      renderCatalog();
+    }
+
+    function resetAllCatalogFilters() {
+      currentCategory = 'all';
+      currentSubcategory = 'all';
+      currentSearch = '';
+      selectedAttributeFilter = null;
+      document.getElementById('catalog-search-input').value = '';
+      setCategoryFilter('all');
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById('catalog-product-grid');
+      const countEl = document.getElementById('catalog-count-text');
+      const activeBar = document.getElementById('active-filters-bar');
+      const activeList = document.getElementById('active-chips-list');
+
+      grid.innerHTML = '';
+
+      // Filter Logic
+      const filtered = PRODUCTS.filter(p => {
+        const matchCat = currentCategory === 'all' || p.category === currentCategory;
+        const matchSub = currentSubcategory === 'all' || p.subcategory === currentSubcategory;
+        const matchSearch = !currentSearch || p.name.toLowerCase().includes(currentSearch) || p.sku.toLowerCase().includes(currentSearch);
+        const matchAttr = !selectedAttributeFilter || 
+                          p.capacity.includes(selectedAttributeFilter) || 
+                          p.material.includes(selectedAttributeFilter) || 
+                          p.feature.includes(selectedAttributeFilter);
+        return matchCat && matchSub && matchSearch && matchAttr;
+      });
+
+      countEl.textContent = `Menampilkan ${filtered.length} produk`;
+
+      // Active filters bar
+      activeList.innerHTML = '';
+      let hasActive = false;
+      if (currentCategory !== 'all') {
+        hasActive = true;
+        activeList.innerHTML += `<span class="bg-slate-200 px-2 py-0.5 rounded text-slate-700">Kategori: ${currentCategory}</span>`;
+      }
+      if (currentSubcategory !== 'all') {
+        hasActive = true;
+        activeList.innerHTML += `<span class="bg-slate-200 px-2 py-0.5 rounded text-slate-700">Sub: ${currentSubcategory}</span>`;
+      }
+      if (selectedAttributeFilter) {
+        hasActive = true;
+        activeList.innerHTML += `<span class="bg-gold-100 text-gold-900 border border-gold-300 px-2 py-0.5 rounded font-bold">Atribut: ${selectedAttributeFilter}</span>`;
+      }
+      if (currentSearch) {
+        hasActive = true;
+        activeList.innerHTML += `<span class="bg-slate-200 px-2 py-0.5 rounded text-slate-700">Cari: "${currentSearch}"</span>`;
+      }
+      activeBar.classList.toggle('hidden', !hasActive);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400 space-y-2">
+            <p class="font-heading font-bold text-base text-slate-600">Tidak ada produk yang cocok dengan filter ini.</p>
+            <p class="text-xs">Coba reset filter atau gunakan kata kunci pencarian yang lebih umum.</p>
+            <button onclick="resetAllCatalogFilters()" class="mt-2 px-4 py-2 bg-navy-900 text-gold-400 rounded-lg text-xs font-bold">Reset Semua Filter</button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between group';
+        
+        const printBadges = p.prints.slice(0, 2).map(pr => `<span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded text-[10px]">${pr}</span>`).join(' ');
+
+        card.innerHTML = `
+          <div class="space-y-3 cursor-pointer" onclick="openProductModal('${p.id}')">
+            <div class="h-44 rounded-lg bg-navy-900 flex items-center justify-center text-gold-400 font-heading font-extrabold text-2xl relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+              <span class="text-xs absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-gold-500/20 text-gold-300 font-bold">${p.badge}</span>
+              ${p.sku.split('-')[1]}
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span>${p.sku}</span>
+                <span>MOQ: ${p.moq} pcs</span>
+              </div>
+              <h4 class="font-heading font-bold text-sm text-navy-950 mt-1 line-clamp-2 group-hover:text-gold-600 transition">${p.name}</h4>
+              <p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.desc}</p>
+            </div>
+            <div class="flex flex-wrap gap-1 pt-1">${printBadges}</div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 mt-4 flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-emerald-600">${p.warranty}</span>
+            <button onclick="openProductModal('${p.id}')" class="px-3 py-1.5 rounded bg-navy-900 hover:bg-navy-800 text-gold-400 text-xs font-heading font-bold transition">
+              Detail & RFQ
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // ---------------------------------------------
+    // SEMINAR KIT FINDER LOGIC
+    // ---------------------------------------------
+    function renderSeminarKits() {
+      const budget = document.getElementById('filter-kit-budget').value;
+      const items = document.getElementById('filter-kit-items').value;
+      const event = document.getElementById('filter-kit-event').value;
+      const pack = document.getElementById('filter-kit-pack').value;
+      const grid = document.getElementById('seminar-kit-grid');
+
+      grid.innerHTML = '';
+
+      const filtered = SEMINAR_KITS.filter(k => {
+        const matchBudget = budget === 'all' || k.budgetTier === budget;
+        const matchItems = items === 'all' || k.itemCount.toString() === items;
+        const matchEvent = event === 'all' || k.eventType.includes(event);
+        const matchPack = pack === 'all' || k.packaging.includes(pack);
+        return matchBudget && matchItems && matchEvent && matchPack;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-400 space-y-2">
+            <p class="font-heading font-bold text-slate-600">Tidak ada paket seminar kit yang cocok.</p>
+            <p class="text-xs">Coba pilih kriteria budget atau packaging yang berbeda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(k => {
+        const itemsList = k.items.map(it => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>${it}</li>`).join('');
+        const waText = encodeURIComponent(`Halo Liebe Pyrus, saya tertarik dengan paket ${k.name} (${k.budgetLabel}) untuk acara ${k.eventType}.${waRefCode ? ` (Ref: ${waRefCode})` : ''}`);
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4';
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-navy-900 text-gold-400 font-bold px-2 py-0.5 rounded">${k.budgetLabel}</span>
+              <span class="text-xs text-slate-500 font-medium">${k.packaging}</span>
+            </div>
+            <h3 class="font-heading font-extrabold text-lg text-navy-950">${k.name}</h3>
+            <p class="text-xs text-slate-500">${k.desc}</p>
+            <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
+              <span class="text-[11px] font-heading font-bold text-slate-700 block mb-1.5">Komponen Isi Paket (${k.itemCount} Item):</span>
+              <ul class="text-xs text-slate-600 space-y-1">${itemsList}</ul>
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href="https://wa.me/6283843893244?text=${waText}" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-xs flex items-center justify-center gap-1.5 transition">
+              <span>Minta Penawaran Paket Ini via WA</span>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // ---------------------------------------------
+    // MODAL: PRODUCT DETAIL (PDP)
+    // ---------------------------------------------
+    function openProductModal(prodId) {
+      const p = PRODUCTS.find(x => x.id === prodId);
+      if (!p) return;
+
+      document.getElementById('modal-product-cat').textContent = `${p.category.toUpperCase()} · ${p.subcategory.toUpperCase()}`;
+      document.getElementById('modal-product-title').textContent = p.name;
+      document.getElementById('modal-product-sku').textContent = `Kode SKU: ${p.sku} · MOQ: ${p.moq} pcs`;
+      document.getElementById('modal-product-desc').textContent = p.desc;
+      document.getElementById('modal-product-media').textContent = p.sku.split('-')[1];
+
+      // Colors
+      const colorsEl = document.getElementById('modal-product-colors');
+      colorsEl.innerHTML = p.colors.map(c => `
+        <span class="w-5 h-5 rounded-full border border-slate-300 inline-block shadow-sm" style="background-color: ${c.hex}" title="${c.name}"></span>
+      `).join('');
+
+      // Print Methods
+      const printsEl = document.getElementById('modal-product-prints');
+      printsEl.innerHTML = p.prints.map(pr => `
+        <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium border border-slate-200">${pr}</span>
+      `).join('');
+
+      // Specs Table
+      const specsEl = document.getElementById('modal-product-specs');
+      specsEl.innerHTML = `
+        <tr class="border-b"><td class="p-2 bg-slate-50 font-bold text-slate-600 w-1/3">Ukuran</td><td class="p-2 text-slate-800">${p.size}</td></tr>
+        <tr class="border-b"><td class="p-2 bg-slate-50 font-bold text-slate-600">Berat</td><td class="p-2 text-slate-800">${p.weight}</td></tr>
+        <tr class="border-b"><td class="p-2 bg-slate-50 font-bold text-slate-600">Material</td><td class="p-2 text-slate-800">${p.material}</td></tr>
+        <tr class="border-b"><td class="p-2 bg-slate-50 font-bold text-slate-600">Area Cetak Logo</td><td class="p-2 text-slate-800">${p.logoArea}</td></tr>
+        <tr><td class="p-2 bg-slate-50 font-bold text-slate-600">Garansi</td><td class="p-2 text-emerald-700 font-bold">${p.warranty}</td></tr>
+      `;
+
+      // WhatsApp Button
+      const waText = encodeURIComponent(`Halo Liebe Pyrus, saya ingin meminta penawaran untuk produk ${p.name} (Kode: ${p.sku}) untuk kebutuhan perusahaan.${waRefCode ? ` (Ref: ${waRefCode})` : ''}`);
+      document.getElementById('modal-wa-btn').href = `https://wa.me/6283843893244?text=${waText}`;
+
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+    }
+
+    // ---------------------------------------------
+    // CONTACT FORM & OTP VERIFICATION SIMULATION
+    // ---------------------------------------------
+    let simulatedOtpCode = '';
+    let pendingFormData = null;
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('rfq-email').value.trim();
+      const name = document.getElementById('rfq-name').value.trim();
+      const company = document.getElementById('rfq-company').value.trim();
+      const phone = document.getElementById('rfq-phone').value.trim();
+      const cat = document.getElementById('rfq-category').value;
+      const msg = document.getElementById('rfq-message').value.trim();
+
+      if (!email || !name) return;
+
+      pendingFormData = { email, name, company, phone, cat, msg };
+
+      // Generate 6-digit OTP simulation
+      simulatedOtpCode = Math.floor(100000 + Math.random() * 900000).toString();
+      document.getElementById('otp-target-email').textContent = email;
+      document.getElementById('otp-simulated-code').textContent = simulatedOtpCode;
+      document.getElementById('otp-input').value = '';
+      document.getElementById('otp-feedback').classList.add('hidden');
+
+      document.getElementById('otp-modal').classList.remove('hidden');
+    }
+
+    function closeOtpModal() {
+      document.getElementById('otp-modal').classList.add('hidden');
+    }
+
+    function resendOtp() {
+      simulatedOtpCode = Math.floor(100000 + Math.random() * 900000).toString();
+      document.getElementById('otp-simulated-code').textContent = simulatedOtpCode;
+      const fb = document.getElementById('otp-feedback');
+      fb.className = 'text-xs p-2 rounded bg-emerald-50 text-emerald-800 block';
+      fb.textContent = 'Kode OTP baru telah digenerate.';
+    }
+
+    function verifyOtpAndSend() {
+      const input = document.getElementById('otp-input').value.trim();
+      const fb = document.getElementById('otp-feedback');
+
+      if (input !== simulatedOtpCode) {
+        fb.className = 'text-xs p-2 rounded bg-red-50 text-red-700 block';
+        fb.textContent = 'Kode OTP tidak cocok. Silakan masukkan 6 digit sesuai simulasi.';
+        return;
+      }
+
+      // Success
+      closeOtpModal();
+      const rfqFb = document.getElementById('rfq-feedback');
+      rfqFb.className = 'text-xs p-4 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+      rfqFb.innerHTML = `<strong>Permintaan Penawaran Berhasil Terkirim!</strong><br>Email ${pendingFormData.email} telah terverifikasi. Tim sales Liebe Pyrus akan mengirimkan estimasi harga resmi dalam 1-2 jam kerja.`;
+      document.getElementById('contact-rfq-form').reset();
+    }
+
+    // ---------------------------------------------
+    // PROMPT & BLUEPRINT VIEWER MODAL
+    // ---------------------------------------------
+    const PROMPT_TEXTS = {
+      master: `# SYSTEM ROLE & EXPERT PERSONA ("SEBAGAI APA KAMU BERTINDAK")\n\nKamu bertindak sebagai Tim Rekayasa & Pertumbuhan Produk B2B Kelas Enterprise yang menggabungkan 4 peran ahli senior:\n1. Principal Full-Stack Web Architect (Next.js SSR, TypeScript Strict & PostgreSQL)\n2. Senior B2B Conversion & Corporate UX/UI Designer\n3. Technical SEO, GEO (Generative Engine Optimization) & AEO Specialist\n4. B2B Growth & Offline Conversion Attribution Engineer\n\nMISI UTAMA:\nBangun aplikasi web full-stack Liebe Pyrus (PT Liebe Pyrus Indonesia) dengan kesetaraan fungsional 100% terhadap https://meliaoptimus.co.id/.\n\n[Lihat selengkapnya di prompts/00-MASTER-PROMPT.md di repositori]`,
+      phase: `# MODULAR PHASE PROMPTS (Fase 1 s/d Fase 6)\n\nFase 1: Inisialisasi Proyek, Design System, Layout SSR & Seed Data Layer\nFase 2: Beranda (8 Seksi Konversi) & 6 Halaman Kredibilitas/Layanan\nFase 3: Katalog Produk 3-Layer Dinamis & Halaman Detail Produk (PDP)\nFase 4: Seminar Kit Finder 4-Dimensi, Pillar SEO, Katalog PDF, Blog & FAQ\nFase 5: Mesin Konversi (Email OTP Contact Form + Offline WA Ref LPY-XXXXX)\nFase 6: Backoffice Admin CMS (/admin), PostgreSQL DB & E2E QA\n\n[Lihat selengkapnya di prompts/01-PHASE-PROMPTS.md di repositori]`,
+      prd: `# Product Requirements Document (PRD) — Liebe Pyrus B2B\n\nProduk: Platform Website B2B Liebe Pyrus (PT Liebe Pyrus Indonesia)\nVersi: 1.0\nReferensi Fungsional: meliaoptimus.co.id\n\nPilar Utama:\n1. Katalog 3-Layer Dinamis (Kategori -> Subkategori -> Filter Label Spesifik)\n2. Seminar Kit Finder 4 Dimensi\n3. 6 Mesin Cetak In-House & Garansi 1 Tahun\n4. Mesin Atribusi WhatsApp Offline Ad-Ref (LPY-XXXXX)\n\n[Lihat selengkapnya di docs/01-PRD.md di repositori]`
+    };
+
+    let activePromptTab = 'master';
+
+    function openPromptViewer() {
+      document.getElementById('prompt-modal').classList.remove('hidden');
+      switchPromptTab('master');
+    }
+
+    function closePromptViewer() {
+      document.getElementById('prompt-modal').classList.add('hidden');
+    }
+
+    function switchPromptTab(tab) {
+      activePromptTab = tab;
+      ['master', 'phase', 'prd'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tab) {
+          btn.className = 'py-2.5 px-4 border-b-2 border-gold-500 text-gold-600 font-bold';
+        } else {
+          btn.className = 'py-2.5 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-800 font-medium';
+        }
+      });
+      document.getElementById('prompt-textarea').value = PROMPT_TEXTS[tab] || '';
+    }
+
+    function copyCurrentPrompt() {
+      const text = document.getElementById('prompt-textarea').value;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-prompt-btn');
+        const oldText = btn.textContent;
+        btn.textContent = 'Tersalin!';
+        btn.classList.add('bg-emerald-500', 'text-white');
+        setTimeout(() => {
+          btn.textContent = oldText;
+          btn.classList.remove('bg-emerald-500', 'text-white');
+        }, 2000);
+      });
+    }
+
+    // Initialize Default View
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSubcategories();
+      renderCatalog();
+      renderSeminarKits();
+    });
+  </script>
 </body>
 </html>
