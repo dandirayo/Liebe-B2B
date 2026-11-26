@@ -176,8 +176,8 @@ SMTP_HOST=""
 SMTP_PORT="587"
 SMTP_USER=""
 SMTP_PASS=""
-SMTP_FROM="Liebe Pyrus Indonesia <no-reply@liebepyrus.co.id>"
-SALES_NOTIFICATION_EMAIL="hello@liebepyrus.co.id"
+SMTP_FROM="Liebe Pyrus Indonesia (Agung Hiday) <agungpyrus@liebe.co.id>"
+SALES_NOTIFICATION_EMAIL="agungpyrus@liebe.co.id"
 
 # Integrasi Analitik & Konversi Iklan (Opsional)
 NEXT_PUBLIC_GOOGLE_ADS_ID=""

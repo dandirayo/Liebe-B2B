@@ -64,9 +64,9 @@ Sebelum menulis kode apa pun, **WAJIB membaca seluruh dokumen sumber kebenaran d
   1. **Mitra Reseller, Event Organizer (EO), Creative/PR Agency, & Vendor Pengadaan** (butuh kepastian QC 1-per-1, harga kompetitif untuk tender, garansi tukar unit, satu invoice produk+cetak, dan *blind dropshipping* langsung ke klien akhir atas nama mereka).
   2. **Tim Procurement, HR/People Ops (Onboarding Kit), General Affairs (GA), Corporate Secretary, & Brand Marketing Perusahaan/Instansi** (butuh katalog jelas, mockup gratis cepat, ketepatan SLA produksi 3–5 hari kerja, dan kualitas material teruji).
 - **Konfigurasi Kontak Default (Terpusat di `siteConfig` & dapat diubah dari Admin CMS):**
-  - Alamat Showroom & Workshop: Jakarta Pusat, DKI Jakarta, Indonesia (placeholder terstruktur di konfigurasi).
-  - Email Resmi: `hello@liebepyrus.co.id`
-  - Telepon Kantor & Nomor WhatsApp Sales B2B: dikonfigurasi via variabel lingkungan / tabel `site_settings`.
+  - Alamat Showroom & Workshop: Bekasi, Indonesia.
+  - Email Resmi: `agungpyrus@liebe.co.id`
+  - Telepon Kantor & Nomor WhatsApp Sales B2B: `+62 896-7736-6058` (PIC: Agung Hiday).
   - Jam Operasional: Senin – Jumat `09.00 – 17.30 WIB`, Sabtu `09.00 – 12.00 WIB`.
 
 ---
